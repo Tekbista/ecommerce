@@ -1,0 +1,45 @@
+
+<div class="container mx-auto mt-5 mb-5">
+    <div class="w-50 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-primary">Login</h2>
+            </div>
+            <div class="card-body">
+                <small class="text-danger" *ngIf="errorMsg">{{errorMsg}}</small>
+                <form [formGroup]="loginForm" #login="ngForm" (ngSubmit)="loginForm.valid && onSubmit()">
+                    
+                    <div class="mt-3 mb-3">
+                        <label>Email</label>
+                        <input class="form-control" type="text" name="email" formControlName="email"
+                            [ngClass]="{'is-invalid': loginForm.get('email')?.touched && loginForm.get('email')?.invalid
+                                        || login.submitted && loginForm.get('email')?.invalid}"
+                        >
+                        <p class="invalid-feedback" *ngIf="loginForm.get('email')?.errors?.['required']">Please enter your email.</p>
+                    </div>
+                    
+                    <div class="mt-3 mb-3">
+                        <label>Password</label>
+                        <input class="form-control" type="password" name="password" formControlName="password"
+                            [ngClass]="{'is-invalid': loginForm.get('password')?.touched && loginForm.get('password')?.invalid
+                                        || login.submitted && loginForm.get('password')?.invalid}"          
+                        >
+                        <p class="invalid-feedback" *ngIf="loginForm.get('password')?.errors?.['required']">Please enter you password.</p>
+                    </div>
+                    
+                    <div class="mt-3 mb-3 float-end">
+                        <button class="btn btn-primary">Login</button>
+                    </div>
+                    <div class="mt-3 mb-3 float-start">
+                        <a routerLink="/register" class="nav-link text-primary">New user? Register</a><br>
+                        <a routerLink="/forgetpassword" class="nav-link text-primary">forget password</a>
+                    </div>
+                    
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,14 @@
+.icon {
+  font-size: 24px;
+  margin-left: 10px;
+  margin-right: 10px;
+  float: right;
+  color: rgb(67, 71, 67);
+}
+
+.container-fluid {
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: rgb(248, 252, 252);
+}

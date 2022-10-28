@@ -1,0 +1,80 @@
+<h2>Payment</h2>
+<p>Choose or add your payment option</p>
+
+<div class="p-4 mt-4 ">
+    <div class="form-check">
+        <input type="radio" class="form-check-input" name="paypalpay" value="payPalPay" (click)="onPayWithPayPal()" [checked]="payPalPay">
+        <label class="form-check-label" for="radio1">Pay with PayPal</label>
+        <p>Complete your purchase on PayPal</p>
+    </div>
+    
+    <div class="form-check">
+        <input type="radio" class="form-check-input" name="existingAddress" value="cardPay" (click)="onPayWithCard()" [checked]="cardPay">
+        <label class="form-check-label" for="radio1">Pay with Credit/Debt Card</label>  
+        <p>Pay with VISA, Mastercard, Discover Card.</p>
+
+        <form action=""  *ngIf="cardPay" class="p-3 mt-5 rounded-2 border">
+            Fill out your card details.
+            <div class="row">
+                <div class="col-sm-8 mt-2 mb-2">
+                    <label for="card">Card Number *</label>
+                    <input type="text" name="card" class="form-control">
+                </div>
+                <div class="col-sm-4 mt-2 mb-2">
+                    <label for="lastname">Card Type *</label>
+                    <select name="state" class="form-select">
+                        <option selected disabled>Select Card Type</option>
+                        <option>VISA</option>
+                        <option>Mastercard</option>
+                        <option>Discover</option>
+                    </select>
+                </div> 
+            </div>
+            <div class="mt-2 mb-2">
+                <label for="address1">Name on Card *</label>
+                <input type="text" name="address1" class="form-control">
+            </div>
+            
+            <div class="row">
+                <div class="col-sm-6 mt-2 mb-2">
+                    <label for="city">Expiration Date *</label>
+                    <select name="state" class="form-select">
+                        <option selected disabled>Select Month</option>
+                        <option>Jan(01)</option>
+                        <option>Feb(02)</option>
+                        <option>Mar(03)</option>
+                        <option>Apr(04)</option>
+                        <option>May(05)</option>
+                        <option>Jun(06)</option>
+                        <option>Jul(07)</option>
+                        <option>Aug(08)</option>
+                        <option>Sep(09)</option>
+                        <option>Oct(10)</option>
+                        <option>Nov(11)</option>
+                        <option>Dec(12)</option>
+                    </select>
+                </div>
+               
+                <div class="col-sm-3 mt-2 mb-2">
+                    <label for="zipcode">Year *</label>
+                    <select name="state" class="form-select">
+                        <option selected disabled>Select Month</option>
+                        <option>2022</option>
+                        <option>2023</option>
+                        <option>2024</option>
+                        <option>2025</option>
+                        <option>2026</option>
+                        <option>2027</option>
+                        <option>2028</option>
+                    </select>
+                </div>
+                <div class="col-sm-3 mt-2 mb-2">
+                    <label for="zipcode">Security Code *</label>
+                    <input type="text" name="zipcode" class="form-control">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+

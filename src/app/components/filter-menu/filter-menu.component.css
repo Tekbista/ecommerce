@@ -1,0 +1,41 @@
+.filter-menu {
+  position: absolute;
+  width: 300px;
+  height: 100%;
+  margin-left: 0;
+  background-color: rgb(50, 35, 65);
+  border-radius: 5px;
+  padding: 20px;
+  z-index: 5;
+}
+
+.filter-menu-header {
+  font-size: 20px;
+  color: #fff;
+  font-weight: normal;
+}
+
+.filter-menu-footer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.bi {
+  margin-right: 20px;
+}
+
+.bi-filter {
+  font-size: 24px;
+}
+hr {
+  color: #fff;
+}
+
+.btn-close-filter-menu {
+  background-color: transparent;
+  border: none;
+  padding: 1px;
+  float: right;
+  color: #fff;
+}

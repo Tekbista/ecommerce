@@ -1,0 +1,10 @@
+.contianer-fluid {
+  background-color: rgb(29, 31, 31);
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+a.nav-link {
+  color: #ffffff;
+}

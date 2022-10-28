@@ -1,0 +1,46 @@
+<h2>Shopping Cart</h2>
+<p>Save & access your shopping cart from any device by <a routerLink="/login">signing in.</a></p>
+<hr>
+<div class="row p-2">
+    <div class="col-sm-7 m-1 p-3 border rounded-2 bg-white">
+        <app-cart-item></app-cart-item>
+        <app-cart-item></app-cart-item>
+        <app-cart-item></app-cart-item>
+        <app-cart-item></app-cart-item>
+    </div>
+    <div class="col-sm-4 m-1 p-3 border rounded-2 bg-white">
+        <strong>2 item(s) in your cart</strong>
+        <hr>
+        <h5>Add Promo Code</h5>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control form-control-lg" placeholder="Add Code" >
+            <button class="btn btn-outline-primary" type="button" >Submit</button>
+        </div>
+        <small>Reward and offer codes should be entered on the checkout's payment page</small>
+        <hr>
+        <strong>Order Summary</strong>
+        <table class="table table-borderless">
+            <tbody>
+                <tr>
+                    <td>Subtotal</td>
+                    <td>$123.0</td>
+                </tr>
+                <tr>
+                    <td>Estimated Shipping</td>
+                    <td>Free</td>
+                </tr>
+            </tbody>
+        </table>
+        <hr>
+        <table class="table table-borderless">
+            <tbody>
+                <tr>
+                    <td>Subtotal Before Tax</td>
+                    <td>$123.0</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="btn-checkout" (click)="checkout()">Checkout</button>
+    </div>
+</div>

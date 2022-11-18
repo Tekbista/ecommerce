@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Product } from 'src/app/models/product';
+import { ProductServiceService } from 'src/app/services/product-service.service';
 
 @Component({
   selector: 'app-trending-now',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrendingNowComponent implements OnInit {
 
-  constructor() { }
+  onSale: Product[] = [];
+  constructor(private _productService: ProductServiceService) { }
 
   ngOnInit(): void {
+    this._productService.getProductOnSale().subscribe({
+      next:(response) =>{
+        this.onSale = response;
+      },
+      complete: () =>{},
+      error: () =>{}
+    })
   }
 
 }

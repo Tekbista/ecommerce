@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-load-page',
@@ -9,7 +10,9 @@ export class ProductLoadPageComponent implements OnInit {
 
  
   filter!:boolean;
-  constructor() { }
+  constructor(private route: Router) { 
+    this.route.routeReuseStrategy.shouldReuseRoute = () => false;
+  }
 
   ngOnInit(): void {
   }

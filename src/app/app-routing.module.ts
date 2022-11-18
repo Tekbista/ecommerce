@@ -20,8 +20,8 @@ const routes: Routes = [
   {path: "forgetpassword", component: ForgotPasswordComponent},
   {path: "resetpassword", component: ResetPassowrdComponent},
   {path: "plp", component: ProductLoadPageComponent},
-  {path: "category", component: ProductLoadPageComponent},
-  {path: "pdp", component: ProductDetailPageComponent},
+  {path: "category/:name", component: ProductLoadPageComponent},
+  {path: "pdp/:id", component: ProductDetailPageComponent},
   {path: "cart", component: ShoppingCartPageComponent},
   {path: "profile", component: ProfilePageComponent},
   {path: "billing", component: BillingPageComponent}

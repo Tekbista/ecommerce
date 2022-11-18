@@ -9,80 +9,29 @@
     </p>
     <button class="filter-button" (click)="showMenu()"><i class="bi bi-filter"></i>Filter</button>
     <hr>
-    <div class="row row-cols-1 row-cols-md-4 g-3">
-        <div class="col">
-            <div class="card h-100" (click)="redirect()">
-            <img src="https://www.apple.com/v/iphone/home/bk/images/meta/iphone__ky2k6x5u6vue_og.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-            <img src="https://www.apple.com/v/iphone/home/bk/images/meta/iphone__ky2k6x5u6vue_og.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-            <img src="https://www.apple.com/v/iphone/home/bk/images/meta/iphone__ky2k6x5u6vue_og.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-            <img src="https://www.apple.com/v/iphone/home/bk/images/meta/iphone__ky2k6x5u6vue_og.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-            <img src="https://www.apple.com/v/iphone/home/bk/images/meta/iphone__ky2k6x5u6vue_og.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-            <img src="https://www.apple.com/v/iphone/home/bk/images/meta/iphone__ky2k6x5u6vue_og.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-            <img src="https://www.apple.com/v/iphone/home/bk/images/meta/iphone__ky2k6x5u6vue_og.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card h-100">
-            <img src="https://www.apple.com/v/iphone/home/bk/images/meta/iphone__ky2k6x5u6vue_og.png" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            </div>
-            </div>
+    <div class="row row-cols-1 row-cols-md-4 g-3" >
+        <div class="col" *ngFor="let product of products">
+            <app-item-card [product]="product"></app-item-card>
         </div>
     </div>
     
 </div>
-<app-pagination></app-pagination>
+<div class="d-flex mx-auto justify-content-center">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item" *ngIf="currentPage != 0" (click)="loadProductByPage(currentPage - 1)">
+            <a class="page-link" aria-label="Previous" >
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item" *ngFor='let in of counter(noOfPage) ;let i = index'>
+            <a class="page-link" (click)="loadProductByPage(i)">{{i + 1}}</a>
+        </li>
+          <li class="page-item" *ngIf="currentPage != noOfPage - 1" (click)="loadProductByPage(currentPage + 1)">
+            <a class="page-link"  aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+</div>

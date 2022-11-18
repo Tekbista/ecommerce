@@ -1,0 +1,20 @@
+<div class="card h-100" routerLink="/pdp/{{product.productId}}">
+    <div class="card-image">
+      <img src={{product.image}} class="card-img-top" alt={{product.productName}}>
+    </div>
+      
+    <div class="card-body">
+      <small>{{product.description}}</small>
+      <div>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+        <i class="bi bi-star-fill"></i>
+      </div> 
+      <p>
+        {{product.price - product.discountPrice | currency}} 
+        <del class="text-danger" *ngIf="product.discountPrice > 0">{{product.price}}</del>
+      </p>
+    </div>
+</div>

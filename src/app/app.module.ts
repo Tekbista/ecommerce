@@ -23,20 +23,19 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CategoryComponent } from './components/category/category.component';
 import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
 import { ShoppingCartPageComponent } from './pages/shopping-cart-page/shopping-cart-page.component';
-import { CartItemComponent } from './components/shopping-cart/cart-item/cart-item.component';
-import { CartComponent } from './components/shopping-cart/cart/cart.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { FilterMenuComponent } from './components/filter-menu/filter-menu.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
 import { BillingPageComponent } from './pages/billing-page/billing-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { BillingComponentComponent } from './components/billing-component/billing-component.component';
 import { ShippingComponentComponent } from './components/shipping-component/shipping-component.component';
 import { PaymentComponentsComponent } from './components/payment-components/payment-components.component';
+import { ItemCardComponent } from './components/item-card/item-card.component';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,19 +58,18 @@ import { PaymentComponentsComponent } from './components/payment-components/paym
     ProductDetailPageComponent,
     ShoppingCartPageComponent,
     ShoppingCartComponent,
-    CartItemComponent,
-    CartComponent,
     ProfilePageComponent,
     ProfileComponent,
     FilterMenuComponent,
     ProductDetailComponent,
-    PaginationComponent,
     BillingPageComponent,
     LoginPageComponent,
     SignupPageComponent,
     BillingComponentComponent,
     ShippingComponentComponent,
-    PaymentComponentsComponent
+    PaymentComponentsComponent,
+    ItemCardComponent,
+    OrderSummaryComponent
   ],
   imports: [
     BrowserModule,

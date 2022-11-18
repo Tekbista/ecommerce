@@ -1,7 +1,7 @@
 <h2>Payment</h2>
 <p>Choose or add your payment option</p>
 
-<div class="p-4 mt-4 ">
+<div class="p-4 mt-4 btn-group-vertical">
     <div class="form-check">
         <input type="radio" class="form-check-input" name="paypalpay" value="payPalPay" (click)="onPayWithPayPal()" [checked]="payPalPay">
         <label class="form-check-label" for="radio1">Pay with PayPal</label>
@@ -16,11 +16,11 @@
         <form action=""  *ngIf="cardPay" class="p-3 mt-5 rounded-2 border">
             Fill out your card details.
             <div class="row">
-                <div class="col-sm-8 mt-2 mb-2">
+                <div class="col-sm-7 mt-2 mb-2">
                     <label for="card">Card Number *</label>
                     <input type="text" name="card" class="form-control">
                 </div>
-                <div class="col-sm-4 mt-2 mb-2">
+                <div class="col-sm-5 mt-2 mb-2">
                     <label for="lastname">Card Type *</label>
                     <select name="state" class="form-select">
                         <option selected disabled>Select Card Type</option>
@@ -36,7 +36,7 @@
             </div>
             
             <div class="row">
-                <div class="col-sm-6 mt-2 mb-2">
+                <div class="col-sm-4 mt-2 mb-2">
                     <label for="city">Expiration Date *</label>
                     <select name="state" class="form-select">
                         <option selected disabled>Select Month</option>
@@ -55,10 +55,10 @@
                     </select>
                 </div>
                
-                <div class="col-sm-3 mt-2 mb-2">
+                <div class="col-sm-4 mt-2 mb-2">
                     <label for="zipcode">Year *</label>
                     <select name="state" class="form-select">
-                        <option selected disabled>Select Month</option>
+                        <option selected disabled>Select Year</option>
                         <option>2022</option>
                         <option>2023</option>
                         <option>2024</option>
@@ -68,7 +68,7 @@
                         <option>2028</option>
                     </select>
                 </div>
-                <div class="col-sm-3 mt-2 mb-2">
+                <div class="col-sm-4 mt-2 mb-2">
                     <label for="zipcode">Security Code *</label>
                     <input type="text" name="zipcode" class="form-control">
                 </div>

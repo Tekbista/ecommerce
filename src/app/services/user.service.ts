@@ -24,4 +24,8 @@ export class UserService {
   forgetPassword(email: string): Observable<any>{
     return this.http.post(`${this.baseUrl}/auth/forgetPassword?email=${email}`, null);
   }
+
+  getUserDetails(): Observable<any>{
+    return this.http.get(`${this.baseUrl}/auth/getUserProfile`);
+  }
 }

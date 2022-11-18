@@ -1,4 +1,33 @@
 <div class="container mx-auto p-3 mt-5 mb-5 border bg-light" >
-    <app-cart></app-cart>
+    <h2>Shopping Cart</h2>
+    <p>Save & access your shopping cart from any device by <a routerLink="/login">signing in.</a></p>
+    <hr>
+    <div class="row p-2">
+        <div class="col-sm-7 p-3 border rounded-2 bg-white" >
+            <div class="cart-item bg-light border p-2 mt-3 mb-3" *ngFor="let item of cartItems">
+                <div class="row">
+                    <div class="col-3 d-flex justify-content-center">
+                        <img src={{item.image}} alt="Item" routerLink="/pdp/{{item.productId}}">
+                    </div>
+                    <div class="col-9">
+                        <strong>{{item.productName}}</strong>
+                        <p>{{item.price - item.discountPrice | currency}}</p>
+                        <p>{{item.discountPrice}}</p>
+                    </div>
+                </div>
+                <hr>
+                <div>
+                    <button class="btn-quantity"><i class="bi bi-dash-circle"></i></button>
+                    <input type="text" name="quantity" class="item-quantity" value="1">
+                    <button class="btn-quantity"><i class="bi bi-plus-circle"></i></button>
+                    <button class="btn-delete" (click)="removeItemFromCart(item)"><i class="bi bi-trash3-fill"></i></button>
+                    <p class="float-end"><strong>{{item.price - item.discountPrice | currency}}</strong></p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 m-1 p-3 border rounded-2 bg-white">
+            <app-order-summary [cartTotal]="cartTotal" [totalItemsInCart]="totalItemsInCart" [buttonTitle]="checkout"></app-order-summary>
+        </div>
+    </div>
 </div>
 

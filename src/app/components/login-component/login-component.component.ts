@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Login } from 'src/app/models/login';
 import { UserService } from 'src/app/services/user.service';
 
@@ -15,7 +16,7 @@ export class LoginComponentComponent implements OnInit {
     email: new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required])
   })
-  constructor(private _userService: UserService) { }
+  constructor(private _userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -31,10 +32,16 @@ export class LoginComponentComponent implements OnInit {
         next: (response) =>  {
           this.token = response.token;
         },
-        complete: () => {this.loginForm.reset()},
+        complete: () => {
+          this.loginForm.reset()
+          if(this.token !== ""){
+            localStorage.setItem("token", this.token);
+            this.router.navigate(["/profile"]);
+          }
+        },
         error: (error) => {
-          this.errorMsg = error.message;
-          console.log(`Error[status ${error.status}]: ${error.error}`);
+          this.errorMsg = error.error;
+          console.log(error)
           this.formReset();
         }
       });
@@ -47,5 +54,6 @@ export class LoginComponentComponent implements OnInit {
     this.loginForm.reset();
     this.loginForm.controls['email'].setErrors(null);
     this.loginForm.controls['password'].setErrors(null);
+    this.loginForm.markAsUntouched();
   }
 }

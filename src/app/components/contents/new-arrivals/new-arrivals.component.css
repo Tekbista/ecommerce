@@ -6,3 +6,27 @@
 .card {
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 }
+
+.card > img{
+  height: 400px;
+  width: 98%;
+}
+
+.card-body{
+  white-space: nowrap; 
+  max-width: 300px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-body > p, small{
+  color: gray;
+  white-space: nowrap; 
+  max-width: 300px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}

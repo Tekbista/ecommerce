@@ -1,0 +1,50 @@
+.card {
+    padding: 10px;
+  }
+  .card-image{
+    height: 300px;
+    width: 100%;
+  }
+  .card-image > img{
+    max-height: 300px;
+    max-width: 80%;
+    padding-left: 15%;
+    padding-top: 15px;
+    align-items: center;
+  }
+  
+  .card-body{
+    white-space: nowrap; 
+    max-width: 300px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .card-body > small{
+    color: blue;
+    white-space: nowrap; 
+    max-width: 300px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+
+  .card-body > p{
+    font-weight: bold;
+    white-space: nowrap; 
+    max-width: 300px; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+
+  .bi-star-fill{
+    color: orange;
+  }
+  

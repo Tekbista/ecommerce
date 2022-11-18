@@ -12,41 +12,7 @@
         </div>
         
         <div class="col-sm-4 m-4 p-3 border rounded-2 bg-light">
-            <strong>2 item(s) in your cart</strong>
-            <hr>
-            
-            <strong>Order Summary</strong>
-            <table class="table table-borderless">
-                <tbody>
-                    <tr>
-                        <td>Subtotal</td>
-                        <td>$123.0</td>
-                    </tr>
-                    <tr>
-                        <td>Estimated Shipping</td>
-                        <td>Free</td>
-                    </tr>
-                    <tr>
-                        <td>Sales Tax</td>
-                        <td>$7.39</td>
-                    </tr>
-                </tbody>
-            </table>
-            <hr>
-            <table class="table table-borderless">
-                <tbody>
-                    <tr>
-                        <td>Subtotal Before Tax</td>
-                        <td>$123.0</td>
-                    </tr>
-                    <tr>
-                        <td>Subtotal After Tax</td>
-                        <td>$130.39.0</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <button class="btn-save-continue">Place Order</button>
+            <app-order-summary [cartTotal]="cartTotal" [totalItemsInCart]="totalItemsInCart" [buttonTitle]="order" [tax]="tax"></app-order-summary>
         </div>
     </div>
 </div>

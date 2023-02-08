@@ -1,52 +1,80 @@
 <div class="container mx-auto mt-5 mb-5">
     <h1>Profile</h1>
     <div class="rounded-2 border p-4" >
-        <form action="">
+        <div class="d-flex justify-content-end"><i class="bi bi-pencil-square" (click)="onProfileEdit()"></i></div>
+        <form [formGroup]="profileForm" #profile="ngForm" (submit)="onSubmit()">
             <div class="mt-2 mb-2">
                 <div class="row">
                     <div class="col-6">
                         <label for="firstname">First Name*</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control"  formControlName="firstName" 
+                            [ngClass]="{'is-invalid': profileForm.get('firstName')?.touched && profileForm.get('firstName')?.invalid
+                            || profile.submitted && profileForm.get('firstName')?.invalid}"
+                        >
+                        <small class="invalid-feedback" *ngIf="profileForm.get('firstName')?.errors?.['required']">First name cannot be blank</small>
                     </div>
                     <div class="col-6">
                         <label for="lastname">Last Name*</label>
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control"  formControlName="lastName" 
+                            [ngClass]="{'is-invalid': profileForm.get('lastName')?.touched && profileForm.get('lastName')?.invalid
+                            || profile.submitted && profileForm.get('lastName')?.invalid}"
+                        >
+                        <small class="invalid-feedback" *ngIf="profileForm.get('lastName')?.errors?.['required']">First name cannot be blank</small>
                     </div>
                 </div>
             </div>
             <div class="mt-2 mb-2">
                 <label for="address1">Address 1</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control"  formControlName="address1" 
+                    [ngClass]="{'is-invalid': profileForm.get('address1')?.touched && profileForm.get('address1')?.invalid
+                    || profile.submitted && profileForm.get('address1')?.invalid}"
+                >
+                <small class="invalid-feedback" *ngIf="profileForm.get('address1')?.errors?.['required']">Address1 cannot be blank</small>
             </div>
             <div class="mt-2 mb-2">
                 <label for="address2">Address 2</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control"  formControlName="address2" 
+                    placeholder="Optional"
+                >
+    
             </div>
             <div class="row">
                 <div class="col-sm-6 mt-2 mb-2">
                     <label for="city">City *</label>
-                    <input type="text" name="city" class="form-control">
+                    <input type="text" name="city" class="form-control"  formControlName="city"
+                        [ngClass]="{'is-invalid': profileForm.get('city')?.touched && profileForm.get('city')?.invalid
+                        || profile.submitted && profileForm.get('city')?.invalid}" >
+                    <small class="invalid-feedback" *ngIf="profileForm.get('city')?.errors?.['required']">City cannot be blank</small>
                 </div>
                 <div class="col-sm-3 mt-2 mb-2">
                     <label for="state">State *</label>
-                    <select name="state" class="form-select">
-                        <option selected disabled>Select State</option>
-                        <option>Ohio</option>
-                        <option>Verginia</option>
-                        <option>Michigan</option>
-                        <option>Illinois</option>
+                    <select name="state" class="form-select"  formControlName="state"
+                        [ngClass]="{'is-invalid': profileForm.get('state')?.touched && profileForm.get('state')?.invalid
+                        || profile.submitted && profileForm.get('state')?.invalid}"
+                    >
+                        <option disabled *ngIf="!userProfile.state">Select State</option>
+                        <option *ngFor="let state of states" [selected]="userProfile.state.name === state.name">{{state.name}}</option>
                     </select>
+                    <small class="invalid-feedback" *ngIf="profileForm.get('state')?.errors?.['state']">Please select the state</small>
                 </div> 
                 <div class="col-sm-3 mt-2 mb-2">
                     <label for="zipcode">ZIP Code *</label>
-                    <input type="text" name="zipcode" class="form-control">
+                    <input type="text" name="zipcode" class="form-control"  formControlName="zipCode" 
+                        [ngClass]="{'is-invalid': profileForm.get('zipCode')?.touched && profileForm.get('zipCode')?.invalid
+                        || profile.submitted && profileForm.get('zipCode')?.invalid}"
+                    >
+                    <small class="invalid-feedback" *ngIf="profileForm.get('zipCode')?.errors?.['required']">Zip code cannot be blank</small>
                 </div>
             </div>
             <div class="mt-2 mb-2">
                 <label for="phone">Phone *</label>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" formControlName="phone" 
+                    [ngClass]="{'is-invalid': profileForm.get('phone')?.touched && profileForm.get('phone')?.invalid
+                    || profile.submitted && profileForm.get('phone')?.invalid}"
+                >
+                <small class="invalid-feedback" *ngIf="profileForm.get('phone')?.errors?.['required'] || profileForm.get('phone')?.errors?.['pattern']">invalid phone number</small>
             </div>
-            <button class="btn btn-primary mt-4 mb-2">Save Changes</button>
+            <button class="btn btn-primary mt-4 mb-2" *ngIf="!isProfileDisable">Save Changes</button>
         </form>
         
     </div>

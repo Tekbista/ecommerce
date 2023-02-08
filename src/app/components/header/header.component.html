@@ -3,7 +3,9 @@
          <img src="assets/images/logo.png" alt="logo">
    </div>
    <div class="col-6">
+        <i class="bi bi-box-arrow-right icon" *ngIf="isUserLoggedIn()" (click)="logout()"></i>
         <a routerLink="/profile"><i class="bi bi-person-circle icon" ></i></a> 
         <a routerLink="/cart"><i class="bi bi-cart4 icon"><sup>{{totalItemOnCart}}</sup></i></a>
+        
    </div>
 </div>

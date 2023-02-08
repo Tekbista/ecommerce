@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { RegistrationComponentComponent } from './components/registration-component/registration-component.component';
 import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ResetPassowrdComponent } from './components/reset-passowrd/reset-passowrd.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -36,6 +36,9 @@ import { ShippingComponentComponent } from './components/shipping-component/ship
 import { PaymentComponentsComponent } from './components/payment-components/payment-components.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { RequestInterceptorService } from './services/request-interceptor.service';
+import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
+import { ErrorComponent } from './components/error/error.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,16 +72,19 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
     ShippingComponentComponent,
     PaymentComponentsComponent,
     ItemCardComponent,
-    OrderSummaryComponent
+    OrderSummaryComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderRouterModule,
   ],
-  providers: [],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: RequestInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

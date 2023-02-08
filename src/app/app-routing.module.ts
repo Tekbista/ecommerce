@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ErrorComponent } from './components/error/error.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { RegistrationComponentComponent } from './components/registration-component/registration-component.component';
@@ -12,6 +13,7 @@ import { ProductLoadPageComponent } from './pages/product-load-page/product-load
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
 import { ShoppingCartPageComponent } from './pages/shopping-cart-page/shopping-cart-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { AuthGuardGuard } from './services/auth-guard.guard';
 
 const routes: Routes = [
   {path: "", component: HomePageComponent},
@@ -23,8 +25,9 @@ const routes: Routes = [
   {path: "category/:name", component: ProductLoadPageComponent},
   {path: "pdp/:id", component: ProductDetailPageComponent},
   {path: "cart", component: ShoppingCartPageComponent},
-  {path: "profile", component: ProfilePageComponent},
-  {path: "billing", component: BillingPageComponent}
+  {path: "profile", component: ProfilePageComponent, canActivate: [AuthGuardGuard]},
+  {path: "billing", component: BillingPageComponent},
+  {path: "**", component: ErrorComponent}
 ];
 
 @NgModule({

@@ -1,20 +1,21 @@
-<app-header></app-header>
-<app-navbar></app-navbar>
-<app-promo-banner></app-promo-banner>
+
 <div class="container mx-auto mb-5">
     <div class="row">
-        <div class="col-sm-7 m-4 p-3 border rounded-2 bg-light">
-            <app-billing-component></app-billing-component>
-            <hr>
-            <app-shipping-component></app-shipping-component>
-            <hr>
-            <app-payment-components></app-payment-components>
+        <div class="col-sm-7">
+            <div class="d-flex flex-row">
+                <div class="p-2 me-1 flex-fill checkout-steps" [ngClass]="{'active-step': currentStep >= 1}">Billing</div>
+                <div class="p-2 me-1 flex-fill checkout-steps" [ngClass]="{'active-step': currentStep >= 2}">Shipping</div>
+                <div class="p-2 me-1 flex-fill checkout-steps" [ngClass]="{'active-step': currentStep >= 3}">Payment</div>
+            </div>
+            <app-billing-component *ngIf="currentStep === 1"></app-billing-component>
+            <app-shipping-component *ngIf="currentStep === 2"></app-shipping-component>
+            <app-payment-components *ngIf="currentStep === 3"></app-payment-components>
         </div>
         
-        <div class="col-sm-4 m-4 p-3 border rounded-2 bg-light">
-            <app-order-summary [cartTotal]="cartTotal" [totalItemsInCart]="totalItemsInCart" [buttonTitle]="order" [tax]="tax"></app-order-summary>
+        <div class="col-sm-4 p-3 border-start pt-5 bg-light">
+            <app-order-summary [cartTotal]="cartTotal" [totalItemsInCart]="totalItemsInCart" [buttonTitle]="btnTitle" [tax]="tax"  (currentTab) = "getCurrentStep($event)"></app-order-summary>
         </div>
     </div>
 </div>
 
-<app-footer></app-footer>
+

@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
 import { Login } from '../models/login';
+import { UserProfile } from '../models/user-profile';
 
 
 @Injectable({
@@ -10,6 +11,7 @@ import { Login } from '../models/login';
 })
 export class UserService {
   baseUrl: string = 'http://localhost:8081/api/v1';
+  token = localStorage.getItem("token");
 
   constructor(private http: HttpClient) { }
 
@@ -25,7 +27,30 @@ export class UserService {
     return this.http.post(`${this.baseUrl}/auth/forgetPassword?email=${email}`, null);
   }
 
+  verifyLogin(): Observable<any>{
+    const httpHeader = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    })
+    return this.http.get(`${this.baseUrl}/auth/verifyLogin`, {headers: httpHeader});
+  }
+
+
   getUserDetails(): Observable<any>{
-    return this.http.get(`${this.baseUrl}/auth/getUserProfile`);
+    
+    const httpHeader = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    })
+    return this.http.get(`${this.baseUrl}/auth/getUserProfile`, {headers: httpHeader});
+  }
+
+  getAllStates(): Observable<any>{
+    return this.http.get(`${this.baseUrl}/auth/getStates`);
+  }
+
+  updateUserProfile(profile: UserProfile): Observable<any>{
+    const httpHeader = new HttpHeaders({
+      'Authorization': `Bearer ${this.token}`
+    })
+    return this.http.post(`${this.baseUrl}`, profile, {headers: httpHeader})
   }
 }

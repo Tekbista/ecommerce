@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 import { Login } from 'src/app/models/login';
 import { UserService } from 'src/app/services/user.service';
 
@@ -28,15 +29,18 @@ export class LoginComponentComponent implements OnInit {
         this.loginForm.value.password
       )
 
+      this._userService.login(login).pipe(map((data) =>{
+        
+      }))
       this._userService.login(login).subscribe({
         next: (response) =>  {
           this.token = response.token;
         },
         complete: () => {
-          this.loginForm.reset()
+          this.formReset();
           if(this.token !== ""){
             localStorage.setItem("token", this.token);
-            this.router.navigate(["/profile"]);
+            this.router.navigate(["/"])
           }
         },
         error: (error) => {

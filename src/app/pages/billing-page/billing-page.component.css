@@ -1,1 +1,9 @@
+.checkout-steps{
+    text-align: center;
+    border-bottom: 2px solid rgb(243, 246, 247);
+}
 
+.active-step{
+    text-align: center;
+    border-bottom: 2px solid rgb(8, 10, 50);
+}

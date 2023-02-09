@@ -26,8 +26,10 @@
             </div>
         </div>
         <div class="col-sm-4 m-1 p-3 border rounded-2 bg-white">
-            <app-order-summary [cartTotal]="cartTotal" [totalItemsInCart]="totalItemsInCart" [buttonTitle]="checkout"></app-order-summary>
+            <app-order-summary [cartTotal]="cartTotal" [totalItemsInCart]="totalItemsInCart" [buttonTitle]="checkout" (click)="onCheckout()"></app-order-summary>
         </div>
     </div>
+
+    
 </div>
 

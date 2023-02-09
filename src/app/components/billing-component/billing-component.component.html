@@ -1,56 +1,85 @@
 
 
-<form action="" class="mt-2 mb-2 p-3 ">
-    <h3>About You</h3>
+<form [formGroup]="billingForm" >
+    <h3 class="mt-4">About You</h3>
     <p>we'll only use your contact info to communicate with you about your order.</p>
     <div class="mt-2 mb-5">
         <label for="email">Email *</label>
-        <input type="text" name="email" class="form-control">
+        <input type="text" class="form-control" formControlName="email">
+        <div class="text-danger" *ngIf="billingForm.get('email')?.touched && billingForm.get('email')?.invalid">
+            <small *ngIf="billingForm.get('email')?.errors?.['required']">Email cannot be empty.</small>
+            <small *ngIf="billingForm.get('email')?.errors?.['email']">Invalid email! Please enter valid email.</small>
+        </div>
     </div>
+    
+    
 
     <h2>Billing Address</h2>
     Confirm or add your billing address. Billing address should match your credit card info.
     <div class="row">
         <div class="col-sm-6 mt-2 mb-2">
             <label for="firstname">First Name *</label>
-            <input type="text" name="firstname" class="form-control">
+            <input type="text" class="form-control" formControlName="firstName">  
+            <div class="text-danger" *ngIf="billingForm.get('firstName')?.touched && billingForm.get('firstName')?.invalid">
+                <small class="text-danger" *ngIf="billingForm.get('firstName')?.errors?.['required']">First name cannot be empty.</small>
+            </div>
         </div>
+        
         <div class="col-sm-6 mt-2 mb-2">
             <label for="lastname">Last Name *</label>
-            <input type="text" name="lastname" class="form-control">
+            <input type="text" formControlName="lastName" class="form-control">
+            <div class="text-danger" *ngIf="billingForm.get('lastName')?.touched && billingForm.get('lastName')?.invalid">
+                <small class="text-danger" *ngIf="billingForm.get('lastName')?.errors?.['required']">Last name cannot be empty.</small>
+            </div>
         </div> 
     </div>
     <div class="mt-2 mb-2">
         <label for="address1">Address 1 *</label>
-        <input type="text" name="address1" class="form-control">
+        <input type="text" formControlName="address1" class="form-control">
+        <div class="text-danger" *ngIf="billingForm.get('address1')?.touched && billingForm.get('address1')?.invalid">
+            <small class="text-danger" *ngIf="billingForm.get('address1')?.errors?.['required']">Address name cannot be empty.</small>
+        </div>
     </div>
     <div class="mt-2 mb-2">
-        <label for="address2">Address 2 *</label>
-        <input type="text" name="address2" class="form-control">
+        <label for="address2">Address 2 </label>
+        <input type="text" formControlName="address2" class="form-control">
     </div>
     <div class="row">
         <div class="col-sm-6 mt-2 mb-2">
             <label for="city">City *</label>
-            <input type="text" name="city" class="form-control">
+            <input type="text" formControlName="city" class="form-control">
+            <div class="text-danger" *ngIf="billingForm.get('city')?.touched && billingForm.get('city')?.invalid">
+                <small class="text-danger" *ngIf="billingForm.get('city')?.errors?.['required']">City name cannot be empty.</small>
+            </div>
         </div>
         <div class="col-sm-3 mt-2 mb-2">
             <label for="state">State *</label>
-            <select name="state" class="form-select">
+            <select formControlName="state" class="form-select">
                 <option selected disabled>Select State</option>
                 <option>Ohio</option>
                 <option>Verginia</option>
                 <option>Michigan</option>
                 <option>Illinois</option>
             </select>
+            <div class="text-danger" *ngIf="billingForm.get('state')?.touched && billingForm.get('state')?.invalid">
+                <small class="text-danger" *ngIf="billingForm.get('state')?.errors?.['required']">State name cannot be empty.</small>
+            </div>
         </div> 
         <div class="col-sm-3 mt-2 mb-2">
             <label for="zipcode">ZIP Code *</label>
-            <input type="text" name="zipcode" class="form-control">
+            <input type="text" formControlName="zipCode" class="form-control">
+            <div class="text-danger" *ngIf="billingForm.get('zipCode')?.touched && billingForm.get('zipCode')?.invalid">
+                <small class="text-danger" *ngIf="billingForm.get('zipCode')?.errors?.['required']">Zip Code name cannot be empty.</small>
+            </div>
         </div>
     </div>
     <div class="mt-2 mb-2">
         <label for="lastname">Phone Number *</label>
-        <input type="text" name="phone" class="form-control">
+        <input type="text" formControlName="phone" class="form-control">
+        <div class="text-danger" *ngIf="billingForm.get('phone')?.touched && billingForm.get('phone')?.invalid">
+            <small class="text-danger" *ngIf="billingForm.get('phone')?.errors?.['required']">Phone number cannot be empty.</small>
+            <small class="text-danger" *ngIf="billingForm.get('phone')?.errors?.['pattern']">Invalid Phone number!</small>
+        </div>
     </div>
     <small>Your phone number is only used if Customer Service needs to contact you. Learn more about how we <a>protect your data</a></small>
 </form>

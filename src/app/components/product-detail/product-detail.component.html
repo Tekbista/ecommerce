@@ -20,11 +20,39 @@
             <p>{{product.description}}</p>
             <hr>
             <div class="d-flex justify-content-end">
-                <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+                <button class="btn btn-primary" (click)="addToCart(product)" data-bs-toggle="modal" data-bs-target="#itemAddedMode">Add to Cart</button>
             </div>
 
         </div>
    </div>
    <hr>
    <h2>Recommanded for you</h2>
+
+   <!-- Modal -->
+   <div class="modal modal-lg fade" id="itemAddedMode" tabindex="-1" aria-labelledby="itemAddedModeLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Item added to cart</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-sm-6 product-image d-flex justify-content-center">
+                        <img src={{product.image}} alt={{product.productName}}>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>{{product.description}} </p>
+                        <h3 class="text-success">{{product.price - product.discountPrice | currency}}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continue Shopping</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="proceedToCheckout()">Proceed to checkout</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
 </div>

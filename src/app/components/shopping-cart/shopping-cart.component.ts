@@ -37,5 +37,8 @@ export class ShoppingCartComponent implements OnInit {
     this.cartTotal = this._cartService.getTotalPrice();
   }
 
+  onCheckout(){
+    this.router.navigate(['/billing'])
+  }
   
 }

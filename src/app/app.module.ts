@@ -35,7 +35,6 @@ import { BillingComponentComponent } from './components/billing-component/billin
 import { ShippingComponentComponent } from './components/shipping-component/shipping-component.component';
 import { PaymentComponentsComponent } from './components/payment-components/payment-components.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
-import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 import { RequestInterceptorService } from './services/request-interceptor.service';
 import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 import { ErrorComponent } from './components/error/error.component';
@@ -72,7 +71,6 @@ import { ErrorComponent } from './components/error/error.component';
     ShippingComponentComponent,
     PaymentComponentsComponent,
     ItemCardComponent,
-    OrderSummaryComponent,
     ErrorComponent
   ],
   imports: [

@@ -41,4 +41,10 @@ export class BillingPageComponent implements OnInit {
     }
   }
 
+  onContinue(){
+    if(this.currentStep < 3){
+      this.currentStep++;
+    }
+  }
+
 }

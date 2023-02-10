@@ -7,3 +7,15 @@
     text-align: center;
     border-bottom: 2px solid rgb(8, 10, 50);
 }
+
+.btn-checkout {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    background-color: rgb(50, 35, 65);
+    color: #ffffff;
+    border: 1px solid rgb(50, 35, 65);
+    border-radius: 10px;
+  }

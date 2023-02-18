@@ -43,6 +43,8 @@ export class UserService {
     return this.http.get(`${this.baseUrl}/auth/getUserProfile`, {headers: httpHeader});
   }
 
+  
+
   getAllStates(): Observable<any>{
     return this.http.get(`${this.baseUrl}/auth/getStates`);
   }
@@ -51,6 +53,6 @@ export class UserService {
     const httpHeader = new HttpHeaders({
       'Authorization': `Bearer ${this.token}`
     })
-    return this.http.post(`${this.baseUrl}`, profile, {headers: httpHeader})
+    return this.http.post(`${this.baseUrl}/auth/updateUserProfile`, profile, {headers: httpHeader})
   }
 }

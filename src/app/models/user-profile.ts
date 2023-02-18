@@ -1,24 +1,15 @@
-import { zip } from "rxjs";
-import { State } from "./state";
+import { Address } from "./address";
 
 export class UserProfile {
     firstName: string;
     lastName: string;
-    address1: string;
-    address2: string;
-    city: string;
-    state: State;
-    zipCode: string;
+    address: Address | undefined;
     phone: string;
 
-    constructor(firstName: string,lastName: string,address1: string,address2: string,city: string,state: State,zipCode: string,phone: string){
+    constructor( firstName: string,lastName: string,address: Address,phone: string){
+        
         this.firstName = firstName;
-        this.lastName = lastName;
-        this.address1 = address1;
-        this.address2 = address2;
-        this.city = city;
-        this.state =state;
-        this.zipCode = zipCode;
+        this.lastName = lastName; 
         this.phone = phone;
 
     }

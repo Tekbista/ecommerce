@@ -48,12 +48,12 @@
                 </div>
                 <div class="col-sm-3 mt-2 mb-2">
                     <label for="state">State *</label>
-                    <select name="state" class="form-select"  formControlName="state"
+                    <select name="state" class="form-select"  formControlName="state" (change)="onSelectChange($event)"
                         [ngClass]="{'is-invalid': profileForm.get('state')?.touched && profileForm.get('state')?.invalid
                         || profile.submitted && profileForm.get('state')?.invalid}"
                     >
-                        <option disabled *ngIf="!userProfile.state">Select State</option>
-                        <option *ngFor="let state of states" [selected]="userProfile.state.name === state.name">{{state.name}}</option>
+                        <option disabled *ngIf="!userProfile.address?.state?.name" value="">Select State</option>
+                        <option *ngFor="let state of states" [selected]="userProfile.address?.state?.name === state.name" [value]="state.stateId">{{state.name}}</option>
                     </select>
                     <small class="invalid-feedback" *ngIf="profileForm.get('state')?.errors?.['state']">Please select the state</small>
                 </div> 

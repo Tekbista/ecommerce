@@ -38,6 +38,7 @@ import { ItemCardComponent } from './components/item-card/item-card.component';
 import { RequestInterceptorService } from './services/request-interceptor.service';
 import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 import { ErrorComponent } from './components/error/error.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,7 +83,7 @@ import { ErrorComponent } from './components/error/error.component';
     NgxUiLoaderModule,
     NgxUiLoaderRouterModule,
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: RequestInterceptorService, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: RequestInterceptorService, multi: true}, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Address } from 'src/app/models/address';
 
 @Component({
   selector: 'app-shipping-component',
@@ -8,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ShippingComponentComponent implements OnInit {
 
-  shipToExistingAddress: boolean = true;
+  sameAsBillingAddress: boolean = true;
   shipToDifferentAddress: boolean = false;
   shippingForm!: FormGroup;
 
@@ -20,12 +21,12 @@ export class ShippingComponentComponent implements OnInit {
 
   onShipToDifferentAddress(){
     this.shipToDifferentAddress = true;
-    this.shipToExistingAddress = false;
+    this.sameAsBillingAddress = false;
   }
 
-  onShipToExistingAddress(){
+  onSameAsBillingAddress(){
     this.shipToDifferentAddress = false;
-    this.shipToExistingAddress = true;
+    this.sameAsBillingAddress = true;
   }
 
   initializeShippingForm(){

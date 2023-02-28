@@ -1,9 +1,8 @@
 <h2>Shipping Address</h2>
 <div class="p-4 mt-4 btn-group-vertical">
-    <div class="form-check">
-        <input type="radio" class="form-check-input" name="existingAddress" value="existingAddress" (click)="onShipToExistingAddress()" [checked]="shipToExistingAddress">
-        <label class="form-check-label" for="radio1">Shipping Address</label>
-        <p>9168 Millcliff drive Cincinnati Ohio 45231</p>
+    <div class="form-check mb-3">
+        <input type="radio" class="form-check-input" name="existingAddress" value="existingAddress" (click)="onSameAsBillingAddress()" [checked]="sameAsBillingAddress">
+        <label class="form-check-label" for="radio1">Same as Billing Address</label>  
     </div>
     
     <div class="form-check">

@@ -33,4 +33,8 @@ export class BillingComponentComponent implements OnInit {
     })
   }
 
+  isBillingFormValid(){
+    return this.billingForm.valid;
+  }
+
 }

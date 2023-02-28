@@ -2,7 +2,7 @@
 <p>Choose or add your payment option</p>
 
 <div class="p-4 mt-4 btn-group-vertical">
-    <div class="form-check">
+    <div class="form-check" hidden>
         <input type="radio" class="form-check-input" name="paypalpay" value="payPalPay" (click)="onPayWithPayPal()" [checked]="payPalPay">
         <label class="form-check-label" for="radio1">Pay with PayPal</label>
         <p>Complete your purchase on PayPal</p>
@@ -11,7 +11,7 @@
     <div class="form-check">
         <input type="radio" class="form-check-input" name="existingAddress" value="cardPay" (click)="onPayWithCard()" [checked]="cardPay">
         <label class="form-check-label" for="radio1">Pay with Credit/Debt Card</label>  
-        <p>Pay with VISA, Mastercard, Discover Card.</p>
+        
 
         <form [formGroup]="paymentForm"  *ngIf="cardPay" class="p-3 mt-5 rounded-2 border">
             Fill out your card details.
@@ -86,7 +86,7 @@
                 </div>
                 <div class="col-sm-4 mt-2 mb-2">
                     <label for="security code">Security Code *</label>
-                    <input type="text" formControlName="securityCode" class="form-control">
+                    <input type="text" formControlName="securityCode" class="form-control" placeholder="CCV">
                     <div class="text-danger" *ngIf="paymentForm.get('securityCode')?.touched && paymentForm.get('securityCode')?.invalid">
                         <small *ngIf="paymentForm.get('securityCode')?.errors?.['required']">Please enter security code.</small>
                         <small *ngIf="paymentForm.get('securityCode')?.errors?.['pattern']">Invalid security code.</small>

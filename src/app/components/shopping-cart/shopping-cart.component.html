@@ -4,6 +4,10 @@
     <hr>
     <div class="row">
         <div class="col-sm-7" >
+            <div class="empty-cart" *ngIf="cartItems.length <= 0">
+                <h2>Your cart is empty.</h2><br><br>
+                <img src="../../../assets/images/empty.png">
+            </div>
             <div class="cart-item bg-light border mb-2 p-2" *ngFor="let item of cartItems">
                 <div class="row mb-2">
                     <div class="col-3 d-flex justify-content-center">
@@ -11,8 +15,8 @@
                     </div>
                     <div class="col-9">
                         <strong>{{item.productName}}</strong>
-                        <p>{{item.price - item.discountPrice | currency}}</p>
-                        <p>{{item.discountPrice}}</p>
+                        <p class="text-success fw-bold">{{item.price - item.discountPrice | currency}}</p>
+                        <p *ngIf="item.discountPrice > 0" class="text-orange">Was {{item.price | currency}} You saved {{item.discountPrice | currency}}</p>
                     </div>
                 </div>
                 <hr>
@@ -21,7 +25,7 @@
                     <input type="text" name="quantity" class="item-quantity" value="1">
                     <button class="btn-quantity"><i class="bi bi-plus-circle"></i></button>
                     <button class="btn-delete" (click)="removeItemFromCart(item)"><i class="bi bi-trash3-fill"></i></button>
-                    <p class="float-end"><strong>{{item.price - item.discountPrice | currency}}</strong></p>
+                    <p class="float-end text-success"><strong>{{item.price - item.discountPrice | currency}}</strong></p>
                 </div>
             </div>
         </div>
@@ -62,8 +66,8 @@
             </table>
             <hr>
             
-
-            <button class="btn-checkout" routerLink="/billing">Checkout</button>
+            <button class="btn-checkout" routerLink="/" *ngIf="cartItems.length <= 0">Back to Shopping</button>
+            <button class="btn-checkout" routerLink="/billing" *ngIf="cartItems.length > 0">Checkout</button>
         </div>
     </div>
 

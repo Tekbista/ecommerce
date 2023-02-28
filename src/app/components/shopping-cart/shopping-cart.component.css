@@ -47,3 +47,11 @@
     border: 1px solid rgb(50, 35, 65);
     border-radius: 10px;
   }
+
+.empty-cart{
+    text-align: center;
+}
+
+.text-orange{
+    color: rgb(122, 80, 1);
+}

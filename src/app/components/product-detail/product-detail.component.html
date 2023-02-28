@@ -28,6 +28,8 @@
    <hr>
    <h2>Recommanded for you</h2>
 
+
+
    <!-- Modal -->
    <div class="modal modal-lg fade" id="itemAddedMode" tabindex="-1" aria-labelledby="itemAddedModeLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -38,10 +40,10 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-sm-6 product-image d-flex justify-content-center">
+                    <div class="col-sm-3 product-image d-flex justify-content-center">
                         <img src={{product.image}} alt={{product.productName}}>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-9">
                         <p>{{product.description}} </p>
                         <h3 class="text-success">{{product.price - product.discountPrice | currency}}</h3>
                     </div>

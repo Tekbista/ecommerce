@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { BillingComponentComponent } from 'src/app/components/billing-component/billing-component.component';
+import { PaymentComponentsComponent } from 'src/app/components/payment-components/payment-components.component';
+import { ShippingComponentComponent } from 'src/app/components/shipping-component/shipping-component.component';
+import { Address } from 'src/app/models/address';
 import { CheckoutSteps } from 'src/app/models/checkout-steps';
 import { CartServiceService } from 'src/app/services/cart-service.service';
 
@@ -8,7 +13,12 @@ import { CartServiceService } from 'src/app/services/cart-service.service';
   styleUrls: ['./billing-page.component.css']
 })
 export class BillingPageComponent implements OnInit {
-  
+  @ViewChild(BillingComponentComponent) billingComp!: BillingComponentComponent;
+  @ViewChild(ShippingComponentComponent) shippingComp!: ShippingComponentComponent;
+  @ViewChild(PaymentComponentsComponent) paymentComp!: PaymentComponentsComponent;
+  billingAddress!: Address;
+  shippingAddress!: Address;
+
   currentStep = CheckoutSteps.Billing;
   btnTitle: string = "Continue";
   cartTotal: number = 0;
@@ -42,7 +52,20 @@ export class BillingPageComponent implements OnInit {
   }
 
   onContinue(){
-    if(this.currentStep < 3){
+    if(this.currentStep  === 1 && this.billingComp.billingForm.valid ){
+      // this.billingAddress.address1 = this.billingComp.billingForm.get('address1')?.value;
+      // this.billingAddress.address2 = this.billingComp.billingForm.get('address2')?.value;
+      // this.billingAddress.city = this.billingComp.billingForm.get('city')?.value;
+      // this.billingAddress.state = this.billingComp.billingForm.get('state')?.value;
+      // this.billingAddress.zipCode = this.billingComp.billingForm.get('zipCode')?.value;
+      console.log(this.billingComp.billingForm.value)
+      this.currentStep++;
+    }
+    if(this.currentStep  === 2 && this.shippingComp.shippingForm.valid){
+      this.currentStep++;
+    }
+
+    if(this.currentStep  === 3 && this.paymentComp.paymentForm.valid ){
       this.currentStep++;
     }
   }

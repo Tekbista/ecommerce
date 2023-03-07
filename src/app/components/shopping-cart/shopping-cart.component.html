@@ -1,49 +1,60 @@
-<div class="container mx-auto p-3 mt-5 mb-5 border bg-light" >
+<div [ngClass]="'container mx-auto p-3 mt-5 mb-5 border bg-light'" >
     <h2>Shopping Cart</h2>
     <p>Save & access your shopping cart from any device by <a routerLink="/login">signing in.</a></p>
     <hr>
-    <div class="row">
-        <div class="col-sm-7" >
-            <div class="empty-cart" *ngIf="cartItems.length <= 0">
+    <div [ngClass]="'row'">
+        <div [ngClass]="'col-sm-7'" >
+            <div *ngIf="cartItems.length <= 0; then emptycart; else loadedcart">
+            </div>
+        </div>
+
+        <!--For empty cart-->
+        <ng-template #emptycart >
+            <div [ngClass]="'empty-cart'">
                 <h2>Your cart is empty.</h2><br><br>
                 <img src="../../../assets/images/empty.png">
             </div>
-            <div class="cart-item bg-light border mb-2 p-2" *ngFor="let item of cartItems">
-                <div class="row mb-2">
-                    <div class="col-3 d-flex justify-content-center">
+        </ng-template>
+
+        <!--For loaded cart-->
+        <ng-template #loadedcart >
+            <div [ngClass]="'cart-item bg-light border mb-2 p-2'" *ngFor="let item of cartItems">
+                <div [ngClass]="'row mb-2'">
+                    <div [ngClass]="'col-3 d-flex justify-content-center'">
                         <img src={{item.image}} alt="Item" routerLink="/pdp/{{item.productId}}">
                     </div>
-                    <div class="col-9">
+                    <div [ngClass]="'col-9'">
                         <strong>{{item.productName}}</strong>
-                        <p class="text-success fw-bold">{{item.price - item.discountPrice | currency}}</p>
-                        <p *ngIf="item.discountPrice > 0" class="text-orange">Was {{item.price | currency}} You saved {{item.discountPrice | currency}}</p>
+                        <p [ngClass]="'text-success fw-bold'">{{item.price - item.discountPrice | currency}}</p>
+                        <p *ngIf="item.discountPrice > 0" [ngClass]="'text-orange'">Was {{item.price | currency}} You saved {{item.discountPrice | currency}}</p>
                     </div>
                 </div>
                 <hr>
-                <div>
-                    <button class="btn-quantity"><i class="bi bi-dash-circle"></i></button>
-                    <input type="text" name="quantity" class="item-quantity" value="1">
-                    <button class="btn-quantity"><i class="bi bi-plus-circle"></i></button>
-                    <button class="btn-delete" (click)="removeItemFromCart(item)"><i class="bi bi-trash3-fill"></i></button>
-                    <p class="float-end text-success"><strong>{{item.price - item.discountPrice | currency}}</strong></p>
+                <div [ngClass]="'d-flex justify-content-between'">
+                    <div [ngClass]="'d-flex'">
+                        <app-quantity></app-quantity>
+                        <button [ngClass]="'btn-delete'" (click)="removeItemFromCart(item)"><i [ngClass]="'bi bi-trash3-fill'"></i></button>
+                    </div>
+                    
+                    <p [ngClass]="'float-end text-success'"><strong>{{item.price - item.discountPrice | currency}}</strong></p>
                 </div>
             </div>
-        </div>
-        
+        </ng-template>
+
 
         <!-- Order Summary -->
-        <div class="col-sm-4 p-3 border ms-5 mb-2 pt-5 bg-light">
+        <div [ngClass]="'col-sm-4 p-3 border ms-5 mb-2 pt-5 bg-light'">
             <strong>{{totalItemsInCart}} item(s) in your cart</strong>
             <hr>
             <h5>Add Promo Code</h5>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control form-control-lg" placeholder="Add Code" >
-                <button class="btn btn-outline-primary" type="button" >Submit</button>
+            <div [ngClass]="'input-group mb-3'">
+                <input type="text" [ngClass]="'form-control form-control-lg'" placeholder="Add Code" >
+                <button [ngClass]="'btn btn-outline-primary'" type="button" >Submit</button>
             </div>
             <small>Reward and offer codes should be entered on the checkout's payment page</small>
             <hr>
             <strong>Order Summary</strong>
-            <table class="table table-borderless">
+            <table [ngClass]="'table table-borderless'">
                 <tbody>
                     <tr>
                         <td>Subtotal</td>
@@ -56,7 +67,7 @@
                 </tbody>
             </table>
             <hr>
-            <table class="table table-borderless">
+            <table [ngClass]="'table table-borderless'">
                 <tbody>
                     <tr>
                         <td>Subtotal Before Tax</td>
@@ -66,10 +77,14 @@
             </table>
             <hr>
             
-            <button class="btn-checkout" routerLink="/" *ngIf="cartItems.length <= 0">Back to Shopping</button>
-            <button class="btn-checkout" routerLink="/billing" *ngIf="cartItems.length > 0">Checkout</button>
+            <button [ngClass]="'btn-checkout'" routerLink="/" *ngIf="cartItems.length <= 0">Back to Shopping</button>
+            <button [ngClass]="'btn-checkout'" routerLink="/billing" *ngIf="cartItems.length > 0">Checkout</button>
         </div>
+
+      
     </div>
+
+   
 
     
 </div>

@@ -1,7 +1,7 @@
 <div class="container mx-auto mt-5 mb-5 p-4">
    <div class="row">
         <div class="col-sm-6 product-image d-flex justify-content-center">
-            <img src={{product.image}} alt={{product.productName}}>
+            <img src="{{product.image}}" alt="{{product.productName}}">
         </div>
         <div class="col-sm-6">
             <strong>{{product.description}} </strong>
@@ -19,7 +19,8 @@
             <hr>
             <p>{{product.description}}</p>
             <hr>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-between">
+                <app-quantity></app-quantity>
                 <button class="btn btn-primary" (click)="addToCart(product)" data-bs-toggle="modal" data-bs-target="#itemAddedMode">Add to Cart</button>
             </div>
 

@@ -11,7 +11,7 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
 })
 export class ProductDetailComponent implements OnInit {
 
-  product!: Product;
+  product: Product = new Product(0, '', 0, 0, '', '', false);
   productId?: number;
   productQuantity: number = 1;
   
@@ -29,7 +29,7 @@ export class ProductDetailComponent implements OnInit {
       next: (response) =>{
         this.product = response;
       },
-      complete: () =>{},
+      complete: () =>{console.log(this.product)},
       error:(error) =>{console.log(error)}
     })
   }

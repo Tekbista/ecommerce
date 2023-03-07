@@ -1,21 +1,4 @@
-.btn-quantity {
-    background-color: green;
-    border: 1px solid green;
-    border-radius: 50%;
-    color: #ffffff;
-    font-weight: bold;
-    margin: 5px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-  }
-  
-  .item-quantity {
-    width: 50px;
-    padding: 5px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    text-align: center;
-  }
+
 
   .product-image > img{
     max-width: 80%;

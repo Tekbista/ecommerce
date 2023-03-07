@@ -8,6 +8,7 @@ import { ResetPassowrdComponent } from './components/reset-passowrd/reset-passow
 import { BillingPageComponent } from './pages/billing-page/billing-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { OrderPageComponent } from './pages/order-page/order-page.component';
 import { ProductDetailPageComponent } from './pages/product-detail-page/product-detail-page.component';
 import { ProductLoadPageComponent } from './pages/product-load-page/product-load-page.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path: "cart", component: ShoppingCartPageComponent},
   {path: "profile", component: ProfilePageComponent, canActivate: [AuthGuardGuard]},
   {path: "billing", component: BillingPageComponent},
+  {path: "order", component: OrderPageComponent},
   {path: "**", component: ErrorComponent}
 ];
 

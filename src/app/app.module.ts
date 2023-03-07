@@ -39,6 +39,8 @@ import { RequestInterceptorService } from './services/request-interceptor.servic
 import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 import { ErrorComponent } from './components/error/error.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { OrderPageComponent } from './pages/order-page/order-page.component';
+import { QuantityComponent } from './components/quantity/quantity.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,7 +74,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     ShippingComponentComponent,
     PaymentComponentsComponent,
     ItemCardComponent,
-    ErrorComponent
+    ErrorComponent,
+    OrderPageComponent,
+    QuantityComponent
   ],
   imports: [
     BrowserModule,

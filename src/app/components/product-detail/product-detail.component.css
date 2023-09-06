@@ -23,3 +23,20 @@
     max-height: 150px;
     max-width: 150px;
   }
+
+  .sec-images-wrapper{
+    overflow-x: scroll;
+  }
+
+  .sec-images{
+    height: 100px;
+    width: 100px;
+    background-color: rgb(244, 247, 247);
+    margin: 5px;
+  }
+
+  .sec-images > img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }

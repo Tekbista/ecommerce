@@ -5,7 +5,6 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { LoginComponentComponent } from './components/login-component/login-component.component';
 import { RegistrationComponentComponent } from './components/registration-component/registration-component.component';
 import { ResetPassowrdComponent } from './components/reset-passowrd/reset-passowrd.component';
-import { BillingPageComponent } from './pages/billing-page/billing-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
@@ -15,6 +14,9 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { ShoppingCartPageComponent } from './pages/shopping-cart-page/shopping-cart-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { AuthGuardGuard } from './services/auth-guard.guard';
+import { BillingComponentComponent } from './components/billing-component/billing-component.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { OrderConfirmationPageComponent } from './pages/order-confirmation-page/order-confirmation-page.component';
 
 const routes: Routes = [
   {path: "", component: HomePageComponent},
@@ -27,8 +29,9 @@ const routes: Routes = [
   {path: "pdp/:id", component: ProductDetailPageComponent},
   {path: "cart", component: ShoppingCartPageComponent},
   {path: "profile", component: ProfilePageComponent, canActivate: [AuthGuardGuard]},
-  {path: "billing", component: BillingPageComponent},
+  {path: "checkout", component: CheckoutPageComponent},
   {path: "order", component: OrderPageComponent},
+  {path: "order-confirm", component: OrderConfirmationPageComponent},
   {path: "**", component: ErrorComponent}
 ];
 

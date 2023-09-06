@@ -5,26 +5,17 @@
     max-height: 100%;
 }
 
-.btn-quantity{
-    border: 1px solid green;
-    border-radius: 50px;
-    background-color: green;
-    color: #fff;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
 
 .btn-delete{
     margin-left: 20px;
-    border: 1px solid red;
-    background-color: red;
+    border: 1px solid lightgrey;
     border-radius: 5px;
-    color: #fff;
-    padding: 2px;
+    padding: 5px;
 }
 
 .bi-trash3-fill{
     font-size: 24px;
+    color: red;
 }
 
 .item-quantity{
@@ -55,3 +46,18 @@
 .text-orange{
     color: rgb(122, 80, 1);
 }
+
+.btn-quantity {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    font-weight: bold;
+    margin: 5px;
+    border: 1px solid rgb(227, 227, 228);
+    color: black;
+  }
+    
+  .form-control{
+    width: 60px;
+    text-align: center;
+  }

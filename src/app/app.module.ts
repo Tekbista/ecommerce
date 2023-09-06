@@ -28,19 +28,18 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
 import { ProfileComponent } from './components/profile/profile.component';
 import { FilterMenuComponent } from './components/filter-menu/filter-menu.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
-import { BillingPageComponent } from './pages/billing-page/billing-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { BillingComponentComponent } from './components/billing-component/billing-component.component';
-import { ShippingComponentComponent } from './components/shipping-component/shipping-component.component';
-import { PaymentComponentsComponent } from './components/payment-components/payment-components.component';
 import { ItemCardComponent } from './components/item-card/item-card.component';
 import { RequestInterceptorService } from './services/request-interceptor.service';
 import { NgxUiLoaderModule, NgxUiLoaderRouterModule } from 'ngx-ui-loader';
 import { ErrorComponent } from './components/error/error.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
-import { QuantityComponent } from './components/quantity/quantity.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
+import { OrderConfirmationPageComponent } from './pages/order-confirmation-page/order-confirmation-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,16 +66,14 @@ import { QuantityComponent } from './components/quantity/quantity.component';
     ProfileComponent,
     FilterMenuComponent,
     ProductDetailComponent,
-    BillingPageComponent,
     LoginPageComponent,
     SignupPageComponent,
     BillingComponentComponent,
-    ShippingComponentComponent,
-    PaymentComponentsComponent,
     ItemCardComponent,
     ErrorComponent,
     OrderPageComponent,
-    QuantityComponent
+    CheckoutPageComponent,
+    OrderConfirmationPageComponent,
   ],
   imports: [
     BrowserModule,

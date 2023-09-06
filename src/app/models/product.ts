@@ -6,8 +6,9 @@ export class Product {
     description: string;
     image: string;
     topProduct: boolean;
+    quantity: number;
 
-    constructor(id:number, productName: string,price: number, discountPrice: number, description: string, image: string, topProduct: boolean){
+    constructor(id:number, productName: string,price: number, discountPrice: number, description: string, image: string, topProduct: boolean, quantity: number){
         this.productId = id;
         this.productName = productName;
         this.price = price;
@@ -15,6 +16,7 @@ export class Product {
         this.description =description;
         this.image = image;
         this.topProduct = topProduct;
+        this.quantity = quantity;
     }
 
 }

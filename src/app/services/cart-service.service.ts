@@ -9,7 +9,7 @@ export class CartServiceService {
   
   cartItemList: Product[] = [];
   productList = new BehaviorSubject<Product[]>([]);
-
+  cartTotal = new BehaviorSubject<number>(0);
   constructor(){}
 
   getProducts(): Observable<Product[]>{
@@ -18,6 +18,7 @@ export class CartServiceService {
     return this.productList;
   }
 
+  
   setProduct(products: Product[]){
     this.cartItemList.push(...products)
     this.productList.next(products)
@@ -25,25 +26,33 @@ export class CartServiceService {
 
   addToCart(product: Product){
     if(localStorage.getItem("cart-items") === null){
-      this.cartItemList.push(product);
-      this.productList.next(this.cartItemList);
-      localStorage.setItem("cart-items", JSON.stringify(this.cartItemList));
-    }else{
-      this.cartItemList = JSON.parse(localStorage.getItem("cart-items") || "[]");
-      this.cartItemList.push(product);
-      this.productList.next(this.cartItemList);
       localStorage.setItem("cart-items", JSON.stringify(this.cartItemList));
     }
+
+    this.cartItemList = JSON.parse(localStorage.getItem("cart-items") || "[]");
+    let found = this.cartItemList.find((item) => {
+      if(item.productId === product.productId){
+        item.quantity += product.quantity;
+      }
+      return item.productId === product.productId
+    })
+    if(!found){
+      this.cartItemList.push(product);
+    }
+
+    this.productList.next(this.cartItemList);
+    localStorage.setItem("cart-items", JSON.stringify(this.cartItemList));
     
     this.getTotalPrice();
   }
   
-  getTotalPrice(): number{
+  getTotalPrice(): BehaviorSubject<number>{
     let grandTotal = 0;
     this.cartItemList.map((product: Product) =>{
-      grandTotal += (product.price - product.discountPrice)
+      grandTotal += ((product.price - product.discountPrice) * product.quantity)
     })
-    return grandTotal;
+    this.cartTotal.next(grandTotal)
+    return this.cartTotal;
   }
 
   removeCartItem(product: Product){
@@ -60,5 +69,19 @@ export class CartServiceService {
   clearCart(){
     this.cartItemList = [];
     this.productList.next(this.cartItemList);
+  }
+
+  changeQuantity(product: Product){
+    this.cartItemList = JSON.parse(localStorage.getItem("cart-items") || "[]");
+    this.cartItemList.find((item) => {
+      if(item.productId === product.productId){
+        item.quantity = product.quantity;
+      }
+    })
+    
+    this.productList.next(this.cartItemList);
+    localStorage.setItem("cart-items", JSON.stringify(this.cartItemList));
+    
+    this.getTotalPrice();
   }
 }

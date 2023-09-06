@@ -13,14 +13,13 @@
                 <i class="bi bi-star-fill"></i>
             </div> 
             <h3 class="text-success">{{product.price - product.discountPrice | currency}}</h3>
-            <div class="save-tag">Save {{product.discountPrice | currency}}</div>
+            <div class="save-tag" *ngIf="product.discountPrice > 0">Save {{product.discountPrice | currency}}</div>
             <small *ngIf="product.discountPrice > 0">Was {{product.price | currency}} Now {{product.discountPrice/product.price * 100 | number: '1.1-2'}}% off</small><br>
             <i class="bi bi-truck"> Free Shipping on Orders $49 or More</i>
             <hr>
             <p>{{product.description}}</p>
             <hr>
             <div class="d-flex justify-content-between">
-                <app-quantity></app-quantity>
                 <button class="btn btn-primary" (click)="addToCart(product)" data-bs-toggle="modal" data-bs-target="#itemAddedMode">Add to Cart</button>
             </div>
 

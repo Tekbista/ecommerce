@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/models/product';
 import { AuthGuardGuard } from 'src/app/services/auth-guard.guard';
 import { CartServiceService } from 'src/app/services/cart-service.service';
 
@@ -10,13 +11,18 @@ import { CartServiceService } from 'src/app/services/cart-service.service';
 })
 export class HeaderComponent implements OnInit {
 
-  totalItemOnCart!: number;
+  totalItemOnCart = 0;
   constructor(private _cartService: CartServiceService, private router: Router) { }
 
   ngOnInit(): void {
     this._cartService.getProducts().subscribe((res) =>{
-      this.totalItemOnCart = res.length;
+      let totalItem = 0;
+      res.map((pro) =>{
+        totalItem += pro.quantity
+      })
+      this.totalItemOnCart = totalItem;
     })
+    
   }
 
   isUserLoggedIn(){

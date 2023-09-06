@@ -32,11 +32,15 @@
                 <hr>
                 <div [ngClass]="'d-flex justify-content-between'">
                     <div [ngClass]="'d-flex'">
-                        <app-quantity></app-quantity>
+                        <div [ngClass]="'d-flex'">
+                            <button [ngClass]="'btn-quantity'" (click)="decrement(item)" [disabled]="item.quantity <= 1">-</button>
+                            <input type="text" name="quantity" [ngClass]="'form-control'" [value]="item.quantity">
+                            <button [ngClass]="'btn-quantity'" (click)="increment(item)">+</button>
+                        </div>
                         <button [ngClass]="'btn-delete'" (click)="removeItemFromCart(item)"><i [ngClass]="'bi bi-trash3-fill'"></i></button>
                     </div>
                     
-                    <p [ngClass]="'float-end text-success'"><strong>{{item.price - item.discountPrice | currency}}</strong></p>
+                    <p [ngClass]="'float-end text-success'"><strong>{{(item.price - item.discountPrice) * item.quantity | currency}}</strong></p>
                 </div>
             </div>
         </ng-template>
@@ -78,7 +82,7 @@
             <hr>
             
             <button [ngClass]="'btn-checkout'" routerLink="/" *ngIf="cartItems.length <= 0">Back to Shopping</button>
-            <button [ngClass]="'btn-checkout'" routerLink="/billing" *ngIf="cartItems.length > 0">Checkout</button>
+            <button [ngClass]="'btn-checkout'" routerLink="/checkout" *ngIf="cartItems.length > 0">Checkout</button>
         </div>
 
       

@@ -15,9 +15,7 @@ export class NewArrivalsComponent implements OnInit {
   ngOnInit(): void {
     this._productService.getNewArrivalProducts().subscribe({
       next: (response) =>  {
-        this.products = response;
-        
-        
+        this.products = response;  
       },
       complete: () => {},
       error: (error) => {

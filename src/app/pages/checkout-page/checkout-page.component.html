@@ -1,0 +1,144 @@
+
+<div class="container mx-auto mb-5">
+    <div class="row">
+        <div class="col-sm-7">
+            <!--Shipping Address Form-->
+            <h2 class="text-primary mt-3">Shipping</h2>
+            <div class="p-3">
+                <form [formGroup]="shippingForm" class="p-3 mt-3 mb-3 rounded-2 border">
+                    We use your shipping address only for shipping purpose.
+                    <div class="row">
+                        <div class="col-sm-6 mt-2 mb-2">
+                            <label for="firstname">First Name *</label>
+                            <input type="text" formControlName="firstName" class="form-control">
+                            <div class="text-danger" *ngIf="shippingForm.get('firstName')?.touched && shippingForm.get('firstName')?.invalid">
+                                <small *ngIf="shippingForm.get('firstName')?.errors?.['required']">First name cannot be empty.</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 mt-2 mb-2">
+                            <label for="lastname">Last Name *</label>
+                            <input type="text" formControlName="lastName" class="form-control">
+                            <div class="text-danger" *ngIf="shippingForm.get('lastName')?.touched && shippingForm.get('lastName')?.invalid">
+                                <small *ngIf="shippingForm.get('lastName')?.errors?.['required']">Last name cannot be empty.</small>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="mt-2 mb-2">
+                        <label for="address1">Address 1 *</label>
+                        <input type="text" formControlName="address1" class="form-control">
+                        <div class="text-danger" *ngIf="shippingForm.get('address1')?.touched && shippingForm.get('address1')?.invalid">
+                            <small *ngIf="shippingForm.get('address1')?.errors?.['required']">Address cannot be empty.</small>
+                        </div>
+                    </div>
+                    <div class="mt-2 mb-2">
+                        <label for="address2">Address 2 *</label>
+                        <input type="text" formControlName="address2" class="form-control">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 mt-2 mb-2">
+                            <label for="city">City *</label>
+                            <input type="text" formControlName="city" class="form-control">
+                            <div class="text-danger" *ngIf="shippingForm.get('city')?.touched && shippingForm.get('city')?.invalid">
+                                <small *ngIf="shippingForm.get('city')?.errors?.['required']">City cannot be empty.</small>
+                            </div>
+                        </div>
+                        <div class="col-sm-3 mt-2 mb-2">
+                            <label for="state">State *</label>
+                            <select formControlName="state" class="form-select">
+                                <option selected disabled>Select State</option>
+                                <option>Ohio</option>
+                                <option>Verginia</option>
+                                <option>Michigan</option>
+                                <option>Illinois</option>
+                            </select>
+                            <div class="text-danger" *ngIf="shippingForm.get('state')?.touched && shippingForm.get('state')?.invalid">
+                                <small *ngIf="shippingForm.get('state')?.errors?.['required']">Please select the state.</small>
+                            </div>
+                        </div> 
+                        <div class="col-sm-3 mt-2 mb-2">
+                            <label for="zipcode">ZIP Code *</label>
+                            <input type="text" formControlName="zipCode" class="form-control">
+                            <div class="text-danger" *ngIf="shippingForm.get('zipCode')?.touched && shippingForm.get('zipCode')?.invalid">
+                                <small *ngIf="shippingForm.get('zipCode')?.errors?.['required']">Zip code cannot be empty.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-2 mb-2">
+                        <label for="lastname">Phone Number *</label>
+                        <input type="text" formControlName="phone" class="form-control">
+                        <div class="text-danger" *ngIf="shippingForm.get('phone')?.touched && shippingForm.get('phone')?.invalid">
+                            <small *ngIf="shippingForm.get('phone')?.errors?.['required']">Phone number cannot be empty.</small>
+                            <small *ngIf="shippingForm.get('phone')?.errors?.['pattern']">Invalid phone number!</small>
+                        </div>
+                    </div>
+                    <small>Your phone number is only used if Customer Service needs to contact you. Learn more about how we <a>protect your data</a></small>
+                </form>
+            </div>
+
+
+
+
+            <!--Payment with paypal-->
+            <h2 class="text-primary">Payment</h2>
+            <div class="p-4 mt-4">
+                <p>Complete your purchase with PayPal</p>
+                <div #paymentRef></div>
+            </div>
+        </div>
+        
+        <!-- Order Summary -->
+        <div class="col-sm-4 p-3 border-start pt-5 bg-light">
+            <strong>{{totalItemsInCart}} item(s) in your cart</strong>
+            <hr>
+            <h5>Add Promo Code</h5>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control form-control-lg" placeholder="Add Code" >
+                <button class="btn btn-outline-primary" type="button" >Submit</button>
+            </div>
+            <small>Reward and offer codes should be entered on the checkout's payment page</small>
+            <hr>
+            <strong>Order Summary</strong>
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td>{{cartTotal | currency}}</td>
+                    </tr>
+                    <tr>
+                        <td>Estimated Shipping</td>
+                        <td>Free</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+            <table class="table table-borderless">
+                <tbody>
+                    <tr>
+                        <td>Subtotal Before Tax</td>
+                        <td>{{cartTotal | currency}}</td>
+                    </tr>
+                    <tr *ngIf="tax > 0">
+                        <td>Sales Tax</td>
+                        <td>{{tax | currency}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr *ngIf="tax > 0">
+            <table class="table table-borderless" *ngIf="tax > 0">
+                <tbody>
+                    <tr>
+                        <td>Subtotal After Tax</td>
+                        <td>{{cartTotal + tax| currency}}</td>
+                    </tr>
+                
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+
+    
+</div>
+
+
+

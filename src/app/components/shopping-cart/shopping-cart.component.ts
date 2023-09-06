@@ -12,7 +12,7 @@ export class ShoppingCartComponent implements OnInit {
 
   cartItems: Product[] = [];
   totalItemsInCart: number = 0;
-  cartTotal = 0;
+  cartTotal: number = 0;
   checkout: string = "Checkout";
   constructor(
     private _cartService: CartServiceService,
@@ -23,22 +23,43 @@ export class ShoppingCartComponent implements OnInit {
     this._cartService.getProducts().subscribe({
       next: (response) =>{
         this.cartItems = response
-        this.totalItemsInCart = response.length;
+        let totalItem = 0;
+        response.map((pro) => {
+          totalItem += pro.quantity;
+        })
+        this.totalItemsInCart = totalItem
       },
       complete: () =>{ },
       error: (error) =>{console.log(error)}
     })
 
-    this.cartTotal = this._cartService.getTotalPrice()
+    this.cartTotal =  this._cartService.getTotalPrice().getValue()
   }
 
   removeItemFromCart(product: Product){
     this._cartService.removeCartItem(product);
-    this.cartTotal = this._cartService.getTotalPrice();
+    this.cartTotal = this._cartService.getTotalPrice().getValue()
   }
 
   onCheckout(){
     this.router.navigate(['/billing'])
   }
+
+  increment(product: Product){
+    product.quantity += 1;
+    this._cartService.changeQuantity(product);
+    this.ngOnInit()
+  }
+
+  decrement(product: Product){
+    if(product.quantity > 1){
+      product.quantity -= 1;
+      this._cartService.changeQuantity(product);
+      this.ngOnInit()
+    }
+    
+    
+  }
+
   
 }

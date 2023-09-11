@@ -21,7 +21,7 @@
             <div [ngClass]="'cart-item bg-light border mb-2 p-2'" *ngFor="let item of cartItems">
                 <div [ngClass]="'row mb-2'">
                     <div [ngClass]="'col-3 d-flex justify-content-center'">
-                        <img src={{item.image}} alt="Item" routerLink="/pdp/{{item.productId}}">
+                        <img src={{item.image[0].url}} alt="Item" routerLink="/pdp/{{item.productId}}">
                     </div>
                     <div [ngClass]="'col-9'">
                         <strong>{{item.productName}}</strong>

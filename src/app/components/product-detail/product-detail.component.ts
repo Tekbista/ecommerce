@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Image } from 'src/app/models/image';
 import { Product } from 'src/app/models/product';
 import { CartServiceService } from 'src/app/services/cart-service.service';
 import { ProductServiceService } from 'src/app/services/product-service.service';
@@ -11,10 +12,10 @@ import { ProductServiceService } from 'src/app/services/product-service.service'
 })
 export class ProductDetailComponent implements OnInit {
 
-  product: Product = new Product(0, '', 0, 0, '', '', false, 0);
+  product: Product = new Product(0, '', 0, 0, '', [], false, 0);
   productId?: number;
   productQuantity: number = 1;
-  
+  displayImage!: any;
 
   constructor(
     private _productService: ProductServiceService,
@@ -29,7 +30,9 @@ export class ProductDetailComponent implements OnInit {
       next: (response) =>{
         this.product = response;
       },
-      complete: () =>{console.log(this.product)},
+      complete: () =>{
+        this.displayImage = this.product.image.find((img) => img.isPrimary === true)?.url
+      },
       error:(error) =>{console.log(error)}
     })
   }
@@ -40,5 +43,9 @@ export class ProductDetailComponent implements OnInit {
 
   proceedToCheckout(){
     this.router.navigate(['/cart'])
+  }
+
+  changeDisplayImage(image: Image){
+    this.displayImage = image.url;
   }
 }

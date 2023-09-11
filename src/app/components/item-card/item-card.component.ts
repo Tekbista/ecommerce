@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -10,10 +10,10 @@ import { Product } from 'src/app/models/product';
 export class ItemCardComponent implements OnInit {
 
   @Input() product!: Product;
+  productImage!: any;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-
+    this.productImage = this.product.image.find((img) => img.isPrimary === true)?.url
   }
-
 }

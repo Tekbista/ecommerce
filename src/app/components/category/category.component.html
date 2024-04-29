@@ -25,7 +25,7 @@
               <span aria-hidden="true">&laquo;</span>
             </a>
           </li>
-          <li class="page-item" *ngFor='let in of counter(noOfPage) ;let i = index'>
+          <li *ngFor='let in of counter(noOfPage) ;let i = index' [ngClass]="{'page-item active': currentPage === i, 'page-item': currentPage !== i}">
             <a class="page-link" (click)="loadProductByPage(i)">{{i + 1}}</a>
           </li>
           <li class="page-item" *ngIf="currentPage != noOfPage - 1" (click)="loadProductByPage(currentPage + 1)">

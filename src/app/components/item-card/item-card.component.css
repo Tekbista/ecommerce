@@ -21,7 +21,7 @@
   }
   
   .card-body > small{
-    color: blue;
+    color: rgb(76, 80, 80);
     white-space: nowrap; 
     max-width: 300px; 
     overflow: hidden;

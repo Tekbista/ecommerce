@@ -1,0 +1,31 @@
+
+.search{
+    border: .5px solid grey;
+    border-radius: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #fff;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search > input {
+    border: none;
+    background-color: #fff;
+    width: 90%;
+    outline: none;
+    appearance: none;
+}
+
+.search > button{
+    border: none;
+    background-color: #fff;
+    outline: none;
+    appearance: none;
+    justify-content: end;
+}
+
+
+

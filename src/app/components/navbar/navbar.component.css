@@ -1,10 +1,17 @@
 .contianer-fluid {
-  background-color: rgb(29, 31, 31);
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2);
+  background-color: #171E58;
+  box-shadow: 0 5px 10px 0 #171E58;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
 a.nav-link {
   color: #ffffff;
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+.nav-item:hover{
+  border-bottom: 1px solid #ffffff;
+  border-radius: 30px;
 }

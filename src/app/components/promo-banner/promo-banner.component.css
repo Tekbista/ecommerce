@@ -1,8 +1,9 @@
 #promo-banner {
-  background-color: brown;
-  padding: 10px;
+  background-color: #FD7C44;
   text-align: center;
 }
 #promo-banner-message {
   color: #ffffff;
+  padding: 5px 0 5px 0;
+  font-weight: 100;
 }

@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class ProfileComponent implements OnInit {
 
-  userProfile: UserProfile = new UserProfile("", "", new Address(0, "", "", "", new State(0, ""), ""),  "");
+  userProfile: UserProfile = new UserProfile(0,"", "", "", new Address(0, "", "", "", new State(0, ""), ""),  "");
   states: State[] = [];
   isProfileDisable = true;
   profileForm!: FormGroup;
@@ -21,9 +21,10 @@ export class ProfileComponent implements OnInit {
   constructor(private _userService: UserService) { }
 
   ngOnInit(): void {
+    this.initializeProfileForm()
     this.getUserProfile();
     this.getStates();
-    this.initializeProfileForm()
+    
   }
 
   initializeProfileForm(){
@@ -41,16 +42,8 @@ export class ProfileComponent implements OnInit {
     })
   }
   getUserProfile(){
-    this._userService.getUserDetails().subscribe({
-      next: (response) => {
-        this.userProfile = response;
-      },
-      complete: () =>{
-        console.log(this.userProfile)
-        this.updateProfile()
-      },
-      error: (error) =>{console.log(error)}      
-    })
+    this.userProfile = this._userService.getUserDetails();
+    this.updateProfile()
   }
 
   getStates(){
@@ -65,7 +58,7 @@ export class ProfileComponent implements OnInit {
     this.profileForm.patchValue({
       firstName: this.userProfile.firstName,
       lastName: this.userProfile.lastName,
-      address1: this.userProfile.address?.address1,
+      address1: this.userProfile.address?.street,
       address2: this.userProfile.address?.address2,
       city: this.userProfile.address?.city,
       state: this.userProfile.address?.state?.name,
@@ -99,7 +92,7 @@ export class ProfileComponent implements OnInit {
 
   onSubmit(){
     if(this.profileForm.valid){
-      this.userProfile.address!.address1 = this.profileForm.value['address1']
+      this.userProfile.address!.street = this.profileForm.value['address1']
       this.userProfile.address!.address2 = this.profileForm.value['address2']
       this.userProfile.address!.city = this.profileForm.value['city']
       this.userProfile.address!.zipCode = this.profileForm.value['zipCode']

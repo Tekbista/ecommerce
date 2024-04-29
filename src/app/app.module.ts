@@ -39,6 +39,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { OrderPageComponent } from './pages/order-page/order-page.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { OrderConfirmationPageComponent } from './pages/order-confirmation-page/order-confirmation-page.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { OrderConfirmationPageComponent } from './pages/order-confirmation-page/
     OrderPageComponent,
     CheckoutPageComponent,
     OrderConfirmationPageComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

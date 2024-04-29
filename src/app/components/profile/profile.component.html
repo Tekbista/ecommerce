@@ -52,7 +52,7 @@
                         [ngClass]="{'is-invalid': profileForm.get('state')?.touched && profileForm.get('state')?.invalid
                         || profile.submitted && profileForm.get('state')?.invalid}"
                     >
-                        <option disabled *ngIf="!userProfile.address?.state?.name" value="">Select State</option>
+                        <option disabled *ngIf="!userProfile.address?.state?.name">Select State</option>
                         <option *ngFor="let state of states" [selected]="userProfile.address?.state?.name === state.name" [value]="state.stateId">{{state.name}}</option>
                     </select>
                     <small class="invalid-feedback" *ngIf="profileForm.get('state')?.errors?.['state']">Please select the state</small>

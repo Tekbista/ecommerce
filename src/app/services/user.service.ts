@@ -35,12 +35,9 @@ export class UserService {
   }
 
 
-  getUserDetails(): Observable<any>{
-    
-    const httpHeader = new HttpHeaders({
-      'Authorization': `Bearer ${this.token}`
-    })
-    return this.http.get(`${this.baseUrl}/auth/getUserProfile`, {headers: httpHeader});
+  getUserDetails(): any{
+    let userProfile =JSON.parse(localStorage.getItem("userProfile") || "") ;
+    return userProfile;
   }
 
   

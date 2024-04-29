@@ -3,16 +3,11 @@
   <div class="container mx-auto row">
     <div class="col-sm-8">
       <ul class="nav" >
-        <li class="nav-item">
-          <a class="nav-link " routerLink="">Home</a>
-        </li>
         <li class="nav-item" *ngFor="let category of categories">
           <a class="nav-link" routerLink="/category/{{category.name}}">{{category.name}}</a>
         </li>
       </ul>
     </div>
-    <div class="col-sm-4">
-      <input type="search" class="form-control" placeholder="Search" name="search">
-    </div>
+    
   </div>
 </div>

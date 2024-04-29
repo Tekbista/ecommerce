@@ -3,15 +3,15 @@ import {State} from './state'
 
 export class Address {
     addressId: number;
-    address1: string;
+    street: string;
     address2: string;
     city: string;
     state: State | undefined;
     zipCode: string;
 
-    constructor(addressId: number, address1: string, address2: string, city: string, state: State, zipCode: string){
+    constructor(addressId: number, street: string, address2: string, city: string, state: State, zipCode: string){
         this.addressId = addressId
-        this.address1 = address1
+        this.street = street
         this.address2 = address2
         this.city = city
         this.state = state

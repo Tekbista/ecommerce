@@ -14,6 +14,10 @@ export class ProductServiceService {
     return this.http.get(`${this.baseUrl}/products/category/${categoryName}?page=${page}&size=${size}`);
   }
 
+  searchProduct(keyword: string, page: number, size: number):Observable<any>{
+    return this.http.get(`${this.baseUrl}/products/search/${keyword}?page=${page}&size=${size}`)
+  }
+  
   getCategories():Observable<any>{
     return this.http.get(`${this.baseUrl}/categories/`);
   }
